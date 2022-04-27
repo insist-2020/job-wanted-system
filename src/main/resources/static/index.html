@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>前途求职</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid px-md-4	">
+	      <a class="navbar-brand" href="index.html">前途求职</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> 菜单
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="index.html" class="nav-link">主页</a></li>
+	          <li class="nav-item"><a href="job-post.html" class="nav-link">职位</a></li>
+	          <li class="nav-item"><a href="candidates.html" class="nav-link">公司</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">面经</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">联系</a></li>
+	          <li class="nav-item cta mr-md-1"><a href="new-post.html" class="nav-link">创作中心</a></li>
+	          <li class="nav-item cta cta-colored"><a href="job-post.html" class="nav-link">用户</a></li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap img" style="background-image: url(images/bg_1.jpg);">
+      <div class="overlay"></div>
+      <div class="container">
+      	<div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
+	        <div class="col-md-10 d-flex align-items-center ftco-animate">
+	        	<div class="text text-center pt-5 mt-md-5">
+	        		<p class="mb-4">找工作难，获取求职信息难</p>
+	            <h1 class="mb-5">前途就业信息网，助您一臂之力</h1>
+							<div class="ftco-counter ftco-no-pt ftco-no-pb">
+			        	<div class="row">
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-worldwide"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong id="userCount" class="number"></strong>
+					                <span>用户</span>
+				                </div>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18 text-center">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-visitor"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong id="companyCount" class="number"></strong>
+					                <span>公司</span>
+					              </div>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18 text-center">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-resume"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong id="jobCount" class="number"></strong>
+					                <span>活跃职位</span>
+					              </div>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+			        </div>
+							<div class="ftco-search my-md-5">
+								<div class="row">
+			            <div class="col-md-12 nav-link-wrap">
+				            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				              <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">查找职位</a>
+
+				              <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">查找公司</a>
+
+				            </div>
+				          </div>
+				          <div class="col-md-12 tab-wrap">
+				            
+				            <div class="tab-content p-4" id="v-pills-tabContent">
+
+				              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+				              	<form action="jobSearch" class="search-job">
+				              		<div class="row no-gutters">
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+					              				<div class="form-field">
+					              					<div class="icon"><span class="icon-briefcase"></span></div>
+									                <input type="text" name="jobName" class="form-control" placeholder="职位">
+									              </div>
+								              </div>
+				              			</div>
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="icon"><span class="icon-map-marker"></span></div>
+									                <input type="text" name="jobAddress" class="form-control" placeholder="地点">
+									              </div>
+								              </div>
+				              			</div>
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+								                	<button type="submit" class="form-control btn btn-primary">查找</button>
+									              </div>
+								              </div>
+				              			</div>
+				              		</div>
+				              	</form>
+				              </div>
+
+				              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+				              	<form action="companySearch" class="search-job">
+				              		<div class="row">
+				              			<div class="col-md">
+				              				<div class="form-group">
+					              				<div class="form-field">
+					              					<div class="icon"><span class="icon-user"></span></div>
+									                <input type="text" class="form-control" placeholder="公司名称">
+									              </div>
+								              </div>
+				              			</div>
+
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="icon"><span class="icon-map-marker"></span></div>
+									                <input type="text" class="form-control" placeholder="地点">
+									              </div>
+								              </div>
+				              			</div>
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+									                <button type="submit" class="form-control btn btn-primary">查找</button>
+									              </div>
+								              </div>
+				              			</div>
+				              		</div>
+				              	</form>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+			        </div>
+	          </div>
+	        </div>
+	    	</div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="category-wrap">
+    					<div class="row no-gutters">
+    						<div class="col-md-2">
+    							<div class="top-category text-center no-border-left">
+    								<h3><a href="#">软件 &amp; 互联网</a></h3>
+    								<span class="icon flaticon-contact"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    						<div class="col-md-2">
+    							<div class="top-category text-center">
+    								<h3><a href="#">教育 &amp; 培训</a></h3>
+    								<span class="icon flaticon-mortarboard"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    						<div class="col-md-2">
+    							<div class="top-category text-center">
+    								<h3><a href="#">绘图 &amp; UI 设计</a></h3>
+    								<span class="icon flaticon-idea"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    						<div class="col-md-2">
+    							<div class="top-category text-center">
+    								<h3><a href="#">会计 &amp; 金融</a></h3>
+    								<span class="icon flaticon-accounting"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    						<div class="col-md-2">
+    							<div class="top-category text-center">
+    								<h3><a href="#">餐饮 &amp; 食物</a></h3>
+    								<span class="icon flaticon-dish"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    						<div class="col-md-2">
+    							<div class="top-category text-center">
+    								<h3><a href="#">健康 &amp; 医疗</a></h3>
+    								<span class="icon flaticon-stethoscope"></span>
+    								<p><span class="number">143</span> <span>个职位</span></p>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">工作类别</span>
+            <h2 class="mb-0">职位排行榜</h2>
+          </div>
+        </div>
+        <div class="row" id="jobTop">
+
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section services-section">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-resume"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">大量的职位数据</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-team"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">简单的操作</h3>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-career"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">优质的职位信息</h3>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block">
+              <div class="icon"><span class="flaticon-employees"></span></div>
+              <div class="media-body">
+                <h3 class="heading mb-3">优质的公司信息</h3>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 pr-lg-5">
+						<div class="row justify-content-center pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		          	<span class="subheading">最新职位</span>
+		            <h2 class="mb-4">本周最新职位</h2>
+		          </div>
+		        </div>
+						<div class="row">
+							<div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Partime</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Frontend Development</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">Facebook, Inc.</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+							<div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+											<span class="subadge">Fulltime</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Full Stack Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">Google, Inc.</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Freelance</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Open Source Interactive Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Partime</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Frontend Development</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">Facebook, Inc.</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Temporary</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Open Source Interactive Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		         	<div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Fulltime</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Full Stack Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">Google, Inc.</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Freelance</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Open Source Interactive Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Internship</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Frontend Development</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">Facebook, Inc.</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+
+		          <div class="col-md-12 ftco-animate">
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center">
+		                	<span class="subadge">Temporary</span>
+		                  <h2 class="mr-3 text-black"><a href="#">Open Source Interactive Developer</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                  <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a></div>
+		                  <div><span class="icon-my_location"></span> <span>Western City, UK</span></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+		              	<div>
+			                <a href="#" class="icon text-center d-flex justify-content-center align-items-center icon mr-2">
+			                	<span class="icon-heart"></span>
+			                </a>
+		                </div>
+		                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+		        </div>
+		      </div>
+		      <div class="col-lg-3 sidebar">
+		        <div class="row justify-content-center pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		            <h2 class="mb-4">公司排行</h2>
+		          </div>
+		        </div>
+		        <div class="sidebar-box ftco-animate">
+		        	<div class="">
+			        	<a href="#" class="company-wrap"><img src="images/company-1.jpg" class="img-fluid" alt="Colorlib Free Template"></a>
+			        	<div class="text p-3">
+			        		<h3><a href="#">Company Company</a></h3>
+			        		<p><span class="number">500</span> <span>Open position</span></p>
+			        	</div>
+		        	</div>
+		        </div>
+		        <div class="sidebar-box ftco-animate">
+		        	<div class="">
+			        	<a href="#" class="company-wrap"><img src="images/company-2.jpg" class="img-fluid" alt="Colorlib Free Template"></a>
+			        	<div class="text p-3">
+			        		<h3><a href="#">Facebook Company</a></h3>
+			        		<p><span class="number">700</span> <span>Open position</span></p>
+			        	</div>
+			        </div>
+		        </div>
+		        <div class="sidebar-box ftco-animate">
+		        	<div class="">
+			        	<a href="#" class="company-wrap"><img src="images/company-3.jpg" class="img-fluid" alt="Colorlib Free Template"></a>
+			        	<div class="text p-3">
+			        		<h3><a href="#">IT Programming INC</a></h3>
+			        		<p><span class="number">700</span> <span>Open position</span></p>
+			        	</div>
+			        </div>
+		        </div>
+		        <div class="sidebar-box ftco-animate">
+		        	<div class="">
+			        	<a href="#" class="company-wrap"><img src="images/company-4.jpg" class="img-fluid" alt="Colorlib Free Template"></a>
+			        	<div class="text p-3">
+			        		<h3><a href="#">IT Programming INC</a></h3>
+			        		<p><span class="number">700</span> <span>Open position</span></p>
+			        	</div>
+			        </div>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</section>
+
+
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">创作奉献者</span>
+            <h2 class="mb-4">前途作者排名</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-candidates bg-primary">
+    	<div class="container">
+    		<div class="row justify-content-center pb-3">
+          <div class="col-md-10 heading-section heading-section-white text-center ftco-animate">
+          	<span class="subheading">顶级公司</span>
+            <h2 class="mb-4">互联网大厂</h2>
+          </div>
+        </div>
+    	</div>
+    	<div class="container">
+        <div class="row">
+        	<div class="col-md-12 ftco-animate">
+        		<div class="carousel-candidates owl-carousel">
+        			<div class="item">
+		        		<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_1.jpg);"></div>
+		        			<h2>Danica Lewis</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+        			</div>
+        			<div class="item">
+	        			<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_2.jpg);"></div>
+		        			<h2>Nicole Simon</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+	        		</div>
+	        		<div class="item">
+	        			<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_3.jpg);"></div>
+		        			<h2>Cloe Meyer</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+	        		</div>
+	        		<div class="item">
+	        			<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_4.jpg);"></div>
+		        			<h2>Rachel Clinton</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+	        		</div>
+	        		<div class="item">
+	        			<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_5.jpg);"></div>
+		        			<h2>Dave Buff</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+	        		</div>
+	        		<div class="item">
+	        			<a href="#" class="team text-center">
+		        			<div class="img" style="background-image: url(images/person_6.jpg);"></div>
+		        			<h2>Dave Buff</h2>
+		        			<span class="position">Western City, UK</span>
+		        		</a>
+	        		</div>
+        		</div>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">面经展示</span>
+            <h2><span>Recent</span> 公司真题</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">August 28, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">August 28, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">August 28, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div><a href="#">August 28, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section-parallax">
+      <div class="parallax-img d-flex align-items-center">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+              <h2>感谢您使用前途信息网</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/common.js"></script>
+
+  <script>
+	  $(function () {
+	     $.get("count",function (data) {
+			 if (data.code > 0){
+			     alert(data.msg);
+			     return
+			 }
+			 var indexCount = data.data;
+			 $("#userCount").html(indexCount.userCount);
+             $("#jobCount").html(indexCount.jobCount);
+             $("#companyCount").html(indexCount.companyCount)
+         });
+	     $.get("jobTop",function (data) {
+	         if (data.code > 1){
+	             alert(data.msg);
+	             return
+             }
+             var jobList = data.data
+             var html = '';
+	         for (var i = 0 ; i<jobList,length ; i+=4 ){
+	             html += '        \t<div class="col-md-3 ftco-animate">\n' +
+                     '        \t\t<ul class="category text-center">';
+	             for (var j = 0 ; j < 4 ; j++ ){
+	                 var jobTopCount = jobList[i+j];
+	                 html += '<li><a href="#">'+jobTopCount.jobName+'<br><span class="number">'+jobTopCount.count+'</span> <span>个职位</span><i class="ion-ios-arrow-forward"></i></a></li>'
+				 }
+				 html += '        \t\t</ul>\n' +
+                     '        \t</div>';
+             }
+             $("jobTop").html(html);
+         });
+      });
+
+
+  </script>
+    
+  </body>
+</html>

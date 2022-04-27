@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.base.job.dao.SubjectMapper">
+
+    <resultMap id="BaseResultMap" type="com.base.job.model.Subjects">
+        <id column="id" property="id"/>
+        <result column="subject_name" property="subjectName"/>
+        <result column="subject_narration" property="subjectNarration"/>
+        <result column="subject_time" property="subjectTime"/>
+        <result column="subject_photo" property="subjectPhoto"/>
+    </resultMap>
+
+    <select id="selectSubjectsAll" resultMap="BaseResultMap">
+        select * from tb_users where user_name=#{userName} and password=#{passWord}
+    </select>
+
+</mapper>

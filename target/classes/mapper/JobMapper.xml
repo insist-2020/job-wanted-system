@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.base.job.dao.JobMapper">
+
+    <resultMap id="BaseResultMap" type="com.base.job.model.Job">
+        <id column="id" property="id"/>
+        <result column="job_name" property="jobName"/>
+        <result column="job_address" property="jobAddress"/>
+        <result column="job_time" property="jobTime"/>
+        <result column="min_money" property="minMoney"/>
+        <result column="max_money" property="maxMoney"/>
+        <result column="job_education" property="jobEducation"/>
+        <result column="job_source" property="jobSource"/>
+        <result column="job_narration" property="jobNarration"/>
+        <result column="job_type" property="jobType"/>
+    </resultMap>
+
+    <resultMap id="TopBaseResultMap" type="com.base.job.model.JobTopCount">
+        <result column="job_name" property="jobName"/>
+        <result column="c" property="count"/>
+    </resultMap>
+
+    <select id="selectJobAll" resultMap="BaseResultMap">
+        SELECT * FROM tb_jobs;
+    </select>
+
+    <select id="selectJobByName" resultType="com.base.job.model.Job">
+        SELECT * from tb_jobs where job_name like concat('%',#{jobName},'%')
+    </select>
+
+    <insert id="insertJobByJsoup">
+        insert into tb_jobs (job_name,job_address,job_time,min_money,max_money,job_education,job_source,job_narration,job_type) values
+        <foreach collection="list" item="job" separator=",">
+            (#{job.jobName},#{job.jobAddress},#{job.jobTime},#{job.minMoney},#{job.maxMoney},#{job.jobEducation},#{job.jobSource},#{job.jobNarration},#{job.jobType})
+        </foreach>
+    </insert>
+
+    <select id="jobCount" resultType="int">
+        select count(id) from tb_jobs;
+    </select>
+
+    <select id="selectJobByNameAndAddress" resultMap="BaseResultMap">
+        select * from tb_jobs where job_name like concat('%',#{jobName},'%') and job_address like concat('%',#{jobAddress},'%')
+    </select>
+
+    <select id="selectJobNameTop" resultMap="TopBaseResultMap">
+        SELECT job_name,c FROM
+(
+   SELECT job_name,COUNT(1) as c
+   FROM tb_jobs
+   GROUP BY job_name
+) s
+ORDER BY c DESC
+LIMIT 0,16;
+    </select>
+
+
+</mapper>

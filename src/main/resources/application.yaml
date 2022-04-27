@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    static-path-pattern: /**
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/job_web?serverTimezone=UTC&useSSL=false&characterEncoding=utf8
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    cache: false
+
+
+mybatis:
+  typeAliasesPackage: com.base.job.model
+  mapperLocations: classpath:mapper/*.xml
+
+
+
